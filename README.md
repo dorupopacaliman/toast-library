@@ -1,50 +1,44 @@
-# React + TypeScript + Vite
+# React Toast Library
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This mini project demonstrates how to create a toast library leveraging React Context and custom hooks. The library provides a simple and flexible way to display toast notifications in a React application.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Display toast notifications with customizable options
+- Position toasts in different corners of the screen
+- Auto-dismiss toasts after a specified timeout
+- Manually dismiss toasts by clicking on them
+- Easy integration with React applications
 
-## Expanding the ESLint configuration
+## Implementation Details
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+The toast library is built using the following key components:
 
-- Configure the top-level `parserOptions` property like this:
+1. **ToastProvider**: A React context provider that manages the state of toasts and provides methods to add and remove toasts.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+2. **useToast**: A custom hook that allows components to easily access the toast functionality.
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+3. **ToastContainer**: A component that renders the toasts in the specified positions.
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+## Key Files
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
+- `src/ToastProvider.tsx`: Implements the ToastProvider component and context
+- `src/useToast.ts`: Defines the useToast custom hook
+- `src/common.ts`: Contains shared types and enums
+- `src/styles.css`: Provides styling for the toast components
+
+## Usage
+
+To use the toast library in your React application:
+
+1. Wrap your main application component with the `ToastProvider`:
+2. Use the `useToast` hook in your components to add toasts:
+3. Customize the appearance and behavior of toasts using the provided options.
+
+## Customization
+
+You can customize the appearance of toasts by modifying the CSS in `src/styles.css`. The library supports different positions for toasts, which can be specified when adding a new toast.
+
+## Conclusion
+
+This mini project showcases how to create a flexible and reusable toast library using React's context API and custom hooks. It provides a solid foundation for building more advanced notification systems in React applications.
